@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql
+  namespace: roboshop
+  labels:
+    project: roboshop
+    component: mysql
+    tire: backend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      component: mysql
+      tire: backend
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        component: mysql
+        tire: backend
+    spec:
+      containers:
+      - name: mysql
+        image: aanitha/mysql:v1
+        imagePullPolicy: Always
+        readinessProbe:
+          tcpSocket:
+            port: 3306
+          initialDelaySeconds: 10
+          periodSeconds: 10
+        livenessProbe:
+          tcpSocket:
+            port: 3306
+          initialDelaySeconds: 5
+          periodSeconds: 5
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mysql
+  namespace: roboshop
+spec:
+  selector:
+    project: roboshop
+    component: mysql
+    tire: backend
+  ports:
+  - protocol: TCP
+    port: 3306
+    targetPort: 3306
