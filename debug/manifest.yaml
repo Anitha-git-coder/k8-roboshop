@@ -3,12 +3,11 @@ kind: Pod
 metadata:
   name: debug
   namespace: roboshop
-  labels: 
+  labels:
     name: debug
     project: roboshop
 spec:
   containers:
   - name: debug
     image: aanitha/debug:v1
-    ports:
-    - containerPort: 80
+    imagePullPolicy: Always
