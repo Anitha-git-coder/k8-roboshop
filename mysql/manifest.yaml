@@ -28,12 +28,12 @@ spec:
         readinessProbe:
           tcpSocket:
             port: 3306
-          initialDelaySeconds: 10
+          initialDelaySeconds: 60
           periodSeconds: 10
         livenessProbe:
           tcpSocket:
             port: 3306
-          initialDelaySeconds: 5
+          initialDelaySeconds: 60
           periodSeconds: 5
 
 ---
