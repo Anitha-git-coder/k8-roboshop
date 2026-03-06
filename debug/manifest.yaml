@@ -11,3 +11,5 @@ spec:
   - name: debug
     image: aanitha/debug:v1
     imagePullPolicy: Always
+    command: ["sleep"]
+    args: ["3600"]
