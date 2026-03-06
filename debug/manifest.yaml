@@ -10,4 +10,4 @@ spec:
   containers:
   - name: debug
     image: aanitha/debug:v1
-    # imagePullPolicy: Always
+    imagePullPolicy: Always
